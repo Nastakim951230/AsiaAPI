@@ -19,6 +19,7 @@ namespace Asia.Controllers
         // GET: api/KinoAndSerials
         public IQueryable<KinoAndSerial> GetKinoAndSerial()
         {
+            
             return db.KinoAndSerial;
         }
 
