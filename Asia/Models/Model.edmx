@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AsiaDrama_TrifonovaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище AsiaDrama_TrifonovaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="IdActor" />
@@ -308,20 +308,76 @@
             <End Role="Sentence" EntitySet="Sentence" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AsiaDrama_TrifonovaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AsiaDrama_TrifonovaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actor" EntityType="AsiaDrama_TrifonovaModel.Actor" />
+          <EntitySet Name="Comments" EntityType="AsiaDrama_TrifonovaModel.Comments" />
+          <EntitySet Name="Country" EntityType="AsiaDrama_TrifonovaModel.Country" />
+          <EntitySet Name="Genre" EntityType="AsiaDrama_TrifonovaModel.Genre" />
+          <EntitySet Name="Groups" EntityType="AsiaDrama_TrifonovaModel.Groups" />
+          <EntitySet Name="KinoAndActor" EntityType="AsiaDrama_TrifonovaModel.KinoAndActor" />
+          <EntitySet Name="KinoAndGenre" EntityType="AsiaDrama_TrifonovaModel.KinoAndGenre" />
+          <EntitySet Name="KinoAndGroups" EntityType="AsiaDrama_TrifonovaModel.KinoAndGroups" />
+          <EntitySet Name="KinoAndSerial" EntityType="AsiaDrama_TrifonovaModel.KinoAndSerial" />
+          <EntitySet Name="Sentence" EntityType="AsiaDrama_TrifonovaModel.Sentence" />
+          <EntitySet Name="Users" EntityType="AsiaDrama_TrifonovaModel.Users" />
+          <AssociationSet Name="FK_KinoAndActor_Actor" Association="AsiaDrama_TrifonovaModel.FK_KinoAndActor_Actor">
+            <End Role="Actor" EntitySet="Actor" />
+            <End Role="KinoAndActor" EntitySet="KinoAndActor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_KinoAndSerial" Association="AsiaDrama_TrifonovaModel.FK_Comments_KinoAndSerial">
+            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="AsiaDrama_TrifonovaModel.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndSerial_Country" Association="AsiaDrama_TrifonovaModel.FK_KinoAndSerial_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndGenre_Genre" Association="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="KinoAndGenre" EntitySet="KinoAndGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndGroups_Groups" Association="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndActor_KinoAndSerial" Association="AsiaDrama_TrifonovaModel.FK_KinoAndActor_KinoAndSerial">
+            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
+            <End Role="KinoAndActor" EntitySet="KinoAndActor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndGenre_KinoAndSerial" Association="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_KinoAndSerial">
+            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
+            <End Role="KinoAndGenre" EntitySet="KinoAndGenre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndGroups_KinoAndSerial" Association="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_KinoAndSerial">
+            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
+            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KinoAndGroups_Users" Association="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sentence_Users" Association="AsiaDrama_TrifonovaModel.FK_Sentence_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sentence" EntitySet="Sentence" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="IdActor" />
           </Key>
           <Property Name="IdActor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameActor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameActor" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DR_Actor" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PhotoActor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="KinoAndActor" Relationship="Self.FK_KinoAndActor_Actor" FromRole="Actor" ToRole="KinoAndActor" />
+          <NavigationProperty Name="KinoAndActor" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndActor_Actor" FromRole="Actor" ToRole="KinoAndActor" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -330,33 +386,33 @@
           <Property Name="IdComments" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUsers" Type="Int32" Nullable="false" />
           <Property Name="idKinoandSerial" Type="Int32" Nullable="false" />
-          <Property Name="Comments1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="KinoAndSerial" Relationship="Self.FK_Comments_KinoAndSerial" FromRole="Comments" ToRole="KinoAndSerial" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+          <Property Name="Comments1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KinoAndSerial" Relationship="AsiaDrama_TrifonovaModel.FK_Comments_KinoAndSerial" FromRole="Comments" ToRole="KinoAndSerial" />
+          <NavigationProperty Name="Users" Relationship="AsiaDrama_TrifonovaModel.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="IdCountry" />
           </Key>
           <Property Name="IdCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="KinoAndSerial" Relationship="Self.FK_KinoAndSerial_Country" FromRole="Country" ToRole="KinoAndSerial" />
+          <Property Name="NameCountry" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KinoAndSerial" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndSerial_Country" FromRole="Country" ToRole="KinoAndSerial" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
             <PropertyRef Name="IdGenre" />
           </Key>
           <Property Name="IdGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameGenre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="KinoAndGenre" Relationship="Self.FK_KinoAndGenre_Genre" FromRole="Genre" ToRole="KinoAndGenre" />
+          <Property Name="NameGenre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KinoAndGenre" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_Genre" FromRole="Genre" ToRole="KinoAndGenre" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
             <PropertyRef Name="IdGroups" />
           </Key>
           <Property Name="IdGroups" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameGroups" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="KinoAndGroups" Relationship="Self.FK_KinoAndGroups_Groups" FromRole="Groups" ToRole="KinoAndGroups" />
+          <Property Name="NameGroups" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KinoAndGroups" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Groups" FromRole="Groups" ToRole="KinoAndGroups" />
         </EntityType>
         <EntityType Name="KinoAndActor">
           <Key>
@@ -365,8 +421,8 @@
           <Property Name="IdKinoAndActor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdKino" Type="Int32" Nullable="false" />
           <Property Name="idActor" Type="Int32" />
-          <NavigationProperty Name="Actor" Relationship="Self.FK_KinoAndActor_Actor" FromRole="KinoAndActor" ToRole="Actor" />
-          <NavigationProperty Name="KinoAndSerial" Relationship="Self.FK_KinoAndActor_KinoAndSerial" FromRole="KinoAndActor" ToRole="KinoAndSerial" />
+          <NavigationProperty Name="Actor" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndActor_Actor" FromRole="KinoAndActor" ToRole="Actor" />
+          <NavigationProperty Name="KinoAndSerial" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndActor_KinoAndSerial" FromRole="KinoAndActor" ToRole="KinoAndSerial" />
         </EntityType>
         <EntityType Name="KinoAndGenre">
           <Key>
@@ -375,8 +431,8 @@
           <Property Name="IdKinoAndGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idKino" Type="Int32" Nullable="false" />
           <Property Name="idGenre" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Genre" Relationship="Self.FK_KinoAndGenre_Genre" FromRole="KinoAndGenre" ToRole="Genre" />
-          <NavigationProperty Name="KinoAndSerial" Relationship="Self.FK_KinoAndGenre_KinoAndSerial" FromRole="KinoAndGenre" ToRole="KinoAndSerial" />
+          <NavigationProperty Name="Genre" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_Genre" FromRole="KinoAndGenre" ToRole="Genre" />
+          <NavigationProperty Name="KinoAndSerial" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_KinoAndSerial" FromRole="KinoAndGenre" ToRole="KinoAndSerial" />
         </EntityType>
         <EntityType Name="KinoAndGroups">
           <Key>
@@ -386,58 +442,58 @@
           <Property Name="IdUsers" Type="Int32" Nullable="false" />
           <Property Name="IdKino" Type="Int32" Nullable="false" />
           <Property Name="IdGroups" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Groups" Relationship="Self.FK_KinoAndGroups_Groups" FromRole="KinoAndGroups" ToRole="Groups" />
-          <NavigationProperty Name="KinoAndSerial" Relationship="Self.FK_KinoAndGroups_KinoAndSerial" FromRole="KinoAndGroups" ToRole="KinoAndSerial" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_KinoAndGroups_Users" FromRole="KinoAndGroups" ToRole="Users" />
+          <NavigationProperty Name="Groups" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Groups" FromRole="KinoAndGroups" ToRole="Groups" />
+          <NavigationProperty Name="KinoAndSerial" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_KinoAndSerial" FromRole="KinoAndGroups" ToRole="KinoAndSerial" />
+          <NavigationProperty Name="Users" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Users" FromRole="KinoAndGroups" ToRole="Users" />
         </EntityType>
         <EntityType Name="KinoAndSerial">
           <Key>
             <PropertyRef Name="IdKinoAndSerial" />
           </Key>
           <Property Name="IdKinoAndSerial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="idCountry" Type="Int32" Nullable="false" />
           <Property Name="YearKinoAndSerial" Type="Int32" Nullable="false" />
-          <Property Name="TimeKinoAndSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeKinoAndSerial" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OKinoAndSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoKinoAndSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_KinoAndSerial" FromRole="KinoAndSerial" ToRole="Comments" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_KinoAndSerial_Country" FromRole="KinoAndSerial" ToRole="Country" />
-          <NavigationProperty Name="KinoAndActor" Relationship="Self.FK_KinoAndActor_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndActor" />
-          <NavigationProperty Name="KinoAndGenre" Relationship="Self.FK_KinoAndGenre_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndGenre" />
-          <NavigationProperty Name="KinoAndGroups" Relationship="Self.FK_KinoAndGroups_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndGroups" />
+          <NavigationProperty Name="Comments" Relationship="AsiaDrama_TrifonovaModel.FK_Comments_KinoAndSerial" FromRole="KinoAndSerial" ToRole="Comments" />
+          <NavigationProperty Name="Country" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndSerial_Country" FromRole="KinoAndSerial" ToRole="Country" />
+          <NavigationProperty Name="KinoAndActor" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndActor_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndActor" />
+          <NavigationProperty Name="KinoAndGenre" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGenre_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndGenre" />
+          <NavigationProperty Name="KinoAndGroups" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_KinoAndSerial" FromRole="KinoAndSerial" ToRole="KinoAndGroups" />
         </EntityType>
         <EntityType Name="Sentence">
           <Key>
             <PropertyRef Name="IdSentence" />
           </Key>
           <Property Name="IdSentence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameKinoAndSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameKinoAndSerial" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Year" Type="Int32" Nullable="false" />
           <Property Name="PhotoKinoAndSerial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Statys" Type="Int32" Nullable="false" />
           <Property Name="idUsers" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Sentence_Users" FromRole="Sentence" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="AsiaDrama_TrifonovaModel.FK_Sentence_Users" FromRole="Sentence" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nickname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoUsers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
-          <NavigationProperty Name="KinoAndGroups" Relationship="Self.FK_KinoAndGroups_Users" FromRole="Users" ToRole="KinoAndGroups" />
-          <NavigationProperty Name="Sentence" Relationship="Self.FK_Sentence_Users" FromRole="Users" ToRole="Sentence" />
+          <NavigationProperty Name="Comments" Relationship="AsiaDrama_TrifonovaModel.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+          <NavigationProperty Name="KinoAndGroups" Relationship="AsiaDrama_TrifonovaModel.FK_KinoAndGroups_Users" FromRole="Users" ToRole="KinoAndGroups" />
+          <NavigationProperty Name="Sentence" Relationship="AsiaDrama_TrifonovaModel.FK_Sentence_Users" FromRole="Users" ToRole="Sentence" />
         </EntityType>
         <Association Name="FK_KinoAndActor_Actor">
-          <End Role="Actor" Type="Self.Actor" Multiplicity="0..1">
+          <End Type="AsiaDrama_TrifonovaModel.Actor" Role="Actor" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KinoAndActor" Type="Self.KinoAndActor" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndActor" Role="KinoAndActor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Actor">
               <PropertyRef Name="IdActor" />
@@ -448,10 +504,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comments_KinoAndSerial">
-          <End Role="KinoAndSerial" Type="Self.KinoAndSerial" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndSerial" Role="KinoAndSerial" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Comments" Role="Comments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KinoAndSerial">
               <PropertyRef Name="IdKinoAndSerial" />
@@ -462,10 +518,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Comments_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.Users" Role="Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Comments" Role="Comments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="IdUser" />
@@ -476,8 +532,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndSerial_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="KinoAndSerial" Type="Self.KinoAndSerial" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndSerial" Role="KinoAndSerial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="IdCountry" />
@@ -488,8 +544,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndGenre_Genre">
-          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
-          <End Role="KinoAndGenre" Type="Self.KinoAndGenre" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Genre" Role="Genre" Multiplicity="1" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndGenre" Role="KinoAndGenre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genre">
               <PropertyRef Name="IdGenre" />
@@ -500,8 +556,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndGroups_Groups">
-          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
-          <End Role="KinoAndGroups" Type="Self.KinoAndGroups" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Groups" Role="Groups" Multiplicity="1" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndGroups" Role="KinoAndGroups" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Groups">
               <PropertyRef Name="IdGroups" />
@@ -512,10 +568,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndActor_KinoAndSerial">
-          <End Role="KinoAndSerial" Type="Self.KinoAndSerial" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndSerial" Role="KinoAndSerial" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KinoAndActor" Type="Self.KinoAndActor" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndActor" Role="KinoAndActor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KinoAndSerial">
               <PropertyRef Name="IdKinoAndSerial" />
@@ -526,10 +582,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndGenre_KinoAndSerial">
-          <End Role="KinoAndSerial" Type="Self.KinoAndSerial" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndSerial" Role="KinoAndSerial" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KinoAndGenre" Type="Self.KinoAndGenre" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndGenre" Role="KinoAndGenre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KinoAndSerial">
               <PropertyRef Name="IdKinoAndSerial" />
@@ -540,10 +596,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndGroups_KinoAndSerial">
-          <End Role="KinoAndSerial" Type="Self.KinoAndSerial" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndSerial" Role="KinoAndSerial" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KinoAndGroups" Type="Self.KinoAndGroups" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndGroups" Role="KinoAndGroups" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KinoAndSerial">
               <PropertyRef Name="IdKinoAndSerial" />
@@ -554,10 +610,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KinoAndGroups_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.Users" Role="Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KinoAndGroups" Type="Self.KinoAndGroups" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.KinoAndGroups" Role="KinoAndGroups" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="IdUser" />
@@ -568,10 +624,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sentence_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
+          <End Type="AsiaDrama_TrifonovaModel.Users" Role="Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
+          <End Type="AsiaDrama_TrifonovaModel.Sentence" Role="Sentence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="IdUser" />
@@ -581,63 +637,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AsiaDrama_TrifonovaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Actor" EntityType="Self.Actor" />
-          <EntitySet Name="Comments" EntityType="Self.Comments" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
-          <EntitySet Name="Genre" EntityType="Self.Genre" />
-          <EntitySet Name="Groups" EntityType="Self.Groups" />
-          <EntitySet Name="KinoAndActor" EntityType="Self.KinoAndActor" />
-          <EntitySet Name="KinoAndGenre" EntityType="Self.KinoAndGenre" />
-          <EntitySet Name="KinoAndGroups" EntityType="Self.KinoAndGroups" />
-          <EntitySet Name="KinoAndSerial" EntityType="Self.KinoAndSerial" />
-          <EntitySet Name="Sentence" EntityType="Self.Sentence" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_KinoAndActor_Actor" Association="Self.FK_KinoAndActor_Actor">
-            <End Role="Actor" EntitySet="Actor" />
-            <End Role="KinoAndActor" EntitySet="KinoAndActor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_KinoAndSerial" Association="Self.FK_Comments_KinoAndSerial">
-            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndSerial_Country" Association="Self.FK_KinoAndSerial_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndGenre_Genre" Association="Self.FK_KinoAndGenre_Genre">
-            <End Role="Genre" EntitySet="Genre" />
-            <End Role="KinoAndGenre" EntitySet="KinoAndGenre" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndGroups_Groups" Association="Self.FK_KinoAndGroups_Groups">
-            <End Role="Groups" EntitySet="Groups" />
-            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndActor_KinoAndSerial" Association="Self.FK_KinoAndActor_KinoAndSerial">
-            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
-            <End Role="KinoAndActor" EntitySet="KinoAndActor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndGenre_KinoAndSerial" Association="Self.FK_KinoAndGenre_KinoAndSerial">
-            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
-            <End Role="KinoAndGenre" EntitySet="KinoAndGenre" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndGroups_KinoAndSerial" Association="Self.FK_KinoAndGroups_KinoAndSerial">
-            <End Role="KinoAndSerial" EntitySet="KinoAndSerial" />
-            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KinoAndGroups_Users" Association="Self.FK_KinoAndGroups_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="KinoAndGroups" EntitySet="KinoAndGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sentence_Users" Association="Self.FK_Sentence_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Sentence" EntitySet="Sentence" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -647,109 +646,109 @@
           <EntitySetMapping Name="Actor">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Actor">
               <MappingFragment StoreEntitySet="Actor">
-                <ScalarProperty Name="IdActor" ColumnName="IdActor" />
-                <ScalarProperty Name="NameActor" ColumnName="NameActor" />
-                <ScalarProperty Name="DR_Actor" ColumnName="DR_Actor" />
                 <ScalarProperty Name="PhotoActor" ColumnName="PhotoActor" />
+                <ScalarProperty Name="DR_Actor" ColumnName="DR_Actor" />
+                <ScalarProperty Name="NameActor" ColumnName="NameActor" />
+                <ScalarProperty Name="IdActor" ColumnName="IdActor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Comments">
               <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="IdComments" ColumnName="IdComments" />
-                <ScalarProperty Name="idUsers" ColumnName="idUsers" />
-                <ScalarProperty Name="idKinoandSerial" ColumnName="idKinoandSerial" />
                 <ScalarProperty Name="Comments1" ColumnName="Comments" />
+                <ScalarProperty Name="idKinoandSerial" ColumnName="idKinoandSerial" />
+                <ScalarProperty Name="idUsers" ColumnName="idUsers" />
+                <ScalarProperty Name="IdComments" ColumnName="IdComments" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
                 <ScalarProperty Name="NameCountry" ColumnName="NameCountry" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Genre">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Genre">
               <MappingFragment StoreEntitySet="Genre">
-                <ScalarProperty Name="IdGenre" ColumnName="IdGenre" />
                 <ScalarProperty Name="NameGenre" ColumnName="NameGenre" />
+                <ScalarProperty Name="IdGenre" ColumnName="IdGenre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Groups">
               <MappingFragment StoreEntitySet="Groups">
-                <ScalarProperty Name="IdGroups" ColumnName="IdGroups" />
                 <ScalarProperty Name="NameGroups" ColumnName="NameGroups" />
+                <ScalarProperty Name="IdGroups" ColumnName="IdGroups" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KinoAndActor">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.KinoAndActor">
               <MappingFragment StoreEntitySet="KinoAndActor">
-                <ScalarProperty Name="IdKinoAndActor" ColumnName="IdKinoAndActor" />
-                <ScalarProperty Name="IdKino" ColumnName="IdKino" />
                 <ScalarProperty Name="idActor" ColumnName="idActor" />
+                <ScalarProperty Name="IdKino" ColumnName="IdKino" />
+                <ScalarProperty Name="IdKinoAndActor" ColumnName="IdKinoAndActor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KinoAndGenre">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.KinoAndGenre">
               <MappingFragment StoreEntitySet="KinoAndGenre">
-                <ScalarProperty Name="IdKinoAndGenre" ColumnName="IdKinoAndGenre" />
-                <ScalarProperty Name="idKino" ColumnName="idKino" />
                 <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+                <ScalarProperty Name="idKino" ColumnName="idKino" />
+                <ScalarProperty Name="IdKinoAndGenre" ColumnName="IdKinoAndGenre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KinoAndGroups">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.KinoAndGroups">
               <MappingFragment StoreEntitySet="KinoAndGroups">
-                <ScalarProperty Name="IdKinoAndGroups" ColumnName="IdKinoAndGroups" />
-                <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
-                <ScalarProperty Name="IdKino" ColumnName="IdKino" />
                 <ScalarProperty Name="IdGroups" ColumnName="IdGroups" />
+                <ScalarProperty Name="IdKino" ColumnName="IdKino" />
+                <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
+                <ScalarProperty Name="IdKinoAndGroups" ColumnName="IdKinoAndGroups" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KinoAndSerial">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.KinoAndSerial">
               <MappingFragment StoreEntitySet="KinoAndSerial">
-                <ScalarProperty Name="IdKinoAndSerial" ColumnName="IdKinoAndSerial" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
-                <ScalarProperty Name="YearKinoAndSerial" ColumnName="YearKinoAndSerial" />
-                <ScalarProperty Name="TimeKinoAndSerial" ColumnName="TimeKinoAndSerial" />
-                <ScalarProperty Name="OKinoAndSerial" ColumnName="OKinoAndSerial" />
                 <ScalarProperty Name="PhotoKinoAndSerial" ColumnName="PhotoKinoAndSerial" />
+                <ScalarProperty Name="OKinoAndSerial" ColumnName="OKinoAndSerial" />
+                <ScalarProperty Name="TimeKinoAndSerial" ColumnName="TimeKinoAndSerial" />
+                <ScalarProperty Name="YearKinoAndSerial" ColumnName="YearKinoAndSerial" />
+                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdKinoAndSerial" ColumnName="IdKinoAndSerial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sentence">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Sentence">
               <MappingFragment StoreEntitySet="Sentence">
-                <ScalarProperty Name="IdSentence" ColumnName="IdSentence" />
-                <ScalarProperty Name="NameKinoAndSerial" ColumnName="NameKinoAndSerial" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="PhotoKinoAndSerial" ColumnName="PhotoKinoAndSerial" />
-                <ScalarProperty Name="Statys" ColumnName="Statys" />
                 <ScalarProperty Name="idUsers" ColumnName="idUsers" />
+                <ScalarProperty Name="Statys" ColumnName="Statys" />
+                <ScalarProperty Name="PhotoKinoAndSerial" ColumnName="PhotoKinoAndSerial" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="NameKinoAndSerial" ColumnName="NameKinoAndSerial" />
+                <ScalarProperty Name="IdSentence" ColumnName="IdSentence" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="AsiaDrama_TrifonovaModel.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="PhotoUsers" ColumnName="PhotoUsers" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="PhotoUsers" ColumnName="PhotoUsers" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
